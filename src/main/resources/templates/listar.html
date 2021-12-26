@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="utf-8" />
+	<title th:text="${titulo}"></title>
+</head>
+
+<body>
+	<h1 th:text="${titulo}"></h1>
+	<div th:if="${facturas.isEmpty()}">No hay usuarios en la lista!</div>
+
+	<table th:if="${facturas.size()>0}">
+		<thead>
+			<tr>
+				<th>id</th>
+				<th>Description</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="factura: ${facturas}">
+				<th th:text="${factura.id}"></th >
+				<th th:text="${factura.description}"></th >
+			</tr >
+		</tbody>
+	</table >
+</body>
+
+</html>
