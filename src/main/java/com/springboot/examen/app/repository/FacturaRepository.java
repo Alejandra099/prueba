@@ -8,6 +8,7 @@ public interface FacturaRepository {
 	
 	public Factura findById(Long id);
 	public List<Factura> findAll();
+	public List<Factura> findAllForCliente(Long id);
 	public void save(Factura factura);
 	public void delete(Long id);
 

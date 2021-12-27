@@ -27,9 +27,11 @@ public class Cliente implements Serializable {
 	public Cliente() {
 		facturas = new ArrayList<Factura>();
 	}
+	public Cliente(String name) {
+		this(null, name);
+	}
 	
 	public Cliente(Long id, String name) {
-		super();
 		this.id = id;
 		this.name = name;
 	}

@@ -12,7 +12,7 @@ import com.springboot.examen.app.repository.FacturaRepository;
 @Repository
 public class FacturaService implements FacturaRepository {
 	
-	JdbcTemplate jdbcTemplate;
+	private JdbcTemplate jdbcTemplate;
 	
 	public FacturaService(JdbcTemplate jdbcTemplate) {
 		this.jdbcTemplate = jdbcTemplate;
@@ -51,9 +51,17 @@ public class FacturaService implements FacturaRepository {
 		
 	}
 
+	@Override
+	public List<Factura> findAllForCliente(Long id) {
+		Object[] args = { id };
+
+        return jdbcTemplate.query("select * from factura where cliente_id = ?", facturaMapper, args);
+	}
+
 	private static RowMapper<Factura> facturaMapper = (rs, rowNum) ->
 	
 	    new Factura(
 	        rs.getLong("id"),
 	        rs.getString("description"));
+
 }

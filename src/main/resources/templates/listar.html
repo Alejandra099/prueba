@@ -1,57 +1,12 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
-<head>
-	<meta charset="utf-8" />
-	<title th:text="${title}"></title>
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-		integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-</head>
+<head th:replace="/layout/layout :: head"></head>
 
 <body>
-	<h1 th:text="${title}"></h1>
-	<div th:if="${facturas.isEmpty()}">No hay usuarios en la lista!</div>
-
-	<div class="container mt-5">
-		<div class="card">
-			<div class="card-header bg-dark text-white">
-				<div class="row mx-4 my-2">
-					<h3 class="col-sm mb-0" th:text="${title}"></h3>
-					<a class="col-sm-1 btn btn-light" th:href="@{/form}">Nuevo</a>
-				</div >
-			</div >
-			<div class="card-body">
-			
-				<table class="table table-striped mt-3">
-					<thead>
-						<tr>
-							<th>Id</th>
-							<th>Description</th>
-							<th>Editar</th>
-							<th>Eliminar</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr th:each="factura: ${facturas}">
-							<td th:text="${factura.id}"></td>
-							<td th:text="${factura.description}"></td>
-							<td>
-								<a th:href="@{form/}+${factura.id}" class="link-dark">
-									<span class="material-icons">edit</span>
-								</a >
-							</td>
-							<td>
-								<a th:href="@{/}+${factura.id}" class="link-dark" onclick="return confirm('Estas seguro de eliminar registro?')">
-									<span class="material-icons">delete</span>
-								</a >
-							</td>
-						</tr>
-					</tbody>
-				</table>
-			</div >
-		</div >
-	</div>
+	<header th:replace="/layout/layout :: header"></header>
+	<div th:replace="/layout/layout :: list"></div >
+	<footer th:replace="layout/layout :: footer"></footer>
 </body>
 
 </html>
