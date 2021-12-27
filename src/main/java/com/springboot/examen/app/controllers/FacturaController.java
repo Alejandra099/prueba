@@ -21,6 +21,7 @@ public class FacturaController {
 	@GetMapping("/listar")
 	public String listar(Model model) {
 		List<Factura> facturas = facturaRepository.findAll();
+		model.addAttribute("title", "Lista Facturas");
 		model.addAttribute("facturas", facturas);
 		return "listar";
 	}
@@ -28,6 +29,7 @@ public class FacturaController {
 	@GetMapping("/form")
 	public String form(Model model) {
 		Factura factura = new Factura();
+		model.addAttribute("title", "Formulario");
 		model.addAttribute("factura", factura);
 		return "form";
 	}
