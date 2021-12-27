@@ -44,8 +44,10 @@ public class FacturaController {
 	@GetMapping("/form")
 	public String form(Model model) {
 		Factura factura = new Factura();
+		List<Cliente> cliente = clienteRepository.findAll();
 		model.addAttribute("title", "Formulario");
 		model.addAttribute("factura", factura);
+		model.addAttribute("clientes", cliente);
 		return "form";
 	}
 	
@@ -58,7 +60,9 @@ public class FacturaController {
 	@GetMapping("/form/{id}")
 	public String modificar(@PathVariable(name = "id")Long id, Model model) {
 		Factura factura = facturaRepository.findById(id);
+		List<Cliente> cliente = clienteRepository.findAll();
 		model.addAttribute("factura", factura);
+		model.addAttribute("clientes", cliente);
 		return "form";
 	}
 	

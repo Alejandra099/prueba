@@ -2,6 +2,7 @@ package com.springboot.examen.app.service;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
@@ -13,6 +14,7 @@ import com.springboot.examen.app.repository.FacturaRepository;
 public class FacturaService implements FacturaRepository {
 	
 	private JdbcTemplate jdbcTemplate;
+	@Autowired
 	
 	public FacturaService(JdbcTemplate jdbcTemplate) {
 		this.jdbcTemplate = jdbcTemplate;
@@ -28,7 +30,7 @@ public class FacturaService implements FacturaRepository {
 	@Override
 	public List<Factura> findAll() {
 		
-		return jdbcTemplate.query("select id, description from factura", facturaMapper);
+		return jdbcTemplate.query("select * from factura", facturaMapper);
 	}
 
 	@Override
