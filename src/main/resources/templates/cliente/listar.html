@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="/layout/layout :: head"></head >
+
+<body>
+	<header th:replace="/layout/layout :: header"></header >
+
+	<div class="container mt-5">
+		<div class="card">
+			<div class="card-header bg-dark text-white">
+				<div class="row mx-4 my-2">
+					<h3 class="col-sm mb-0" th:text="${title}"></h3>
+					<a class="col-sm-1 btn btn-light" th:href="@{/clientes/form}">Nuevo</a>
+				</div >
+			</div >
+			<div class="card-body">
+			
+				<table class="table table-striped mt-3">
+					<thead>
+						<tr>
+							<th>Id</th>
+							<th>Name</th>
+							<th>Editar</th>
+							<th>Eliminar</th>
+							<th>Facturas</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="cliente: ${clientes}">
+							<td th:text="${cliente.id}"></td>
+							<td th:text="${cliente.name}"></td>
+							<td>
+								<a th:href="@{/clientes/form/}+${cliente.id}" class="link-dark">
+									<span class="material-icons">edit</span>
+								</a >
+							</td>
+							<td>
+								<a th:href="@{/clientes/}+${cliente.id}" class="link-dark" onclick="return confirm('Estas seguro de eliminar registro?')">
+									<span class="material-icons">delete</span>
+								</a >
+							</td>
+							<td>
+								<a th:href="@{/}+${cliente.id}+@{/listar}" class="link-dark">
+									<span class="material-icons">description</span>
+								</a >
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div >
+		</div >
+	</div>
+	<footer th:replace="layout/layout :: footer"></footer >
+</body>
+
+</html>

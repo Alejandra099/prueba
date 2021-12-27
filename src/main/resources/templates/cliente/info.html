@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="/layout/layout :: head"></head>
+
+<body>
+	<div class="container mt-5">
+		<div class="card">
+			<div class="card-header bg-dark text-white" th:text="Cliente"></div>
+			<div class="card-body">
+				<form class="mt-3">
+					<div class="form-group row">
+						<label class="col-sm-2 col-form-label">Name</label>
+						<div class="col-sm-6">
+							<label th:text="${cliente.name}"></label>
+						</div>
+					</div>
+					<input type="hidden" th:field="*{cliente.id}" />
+					
+				</form>
+			</div>
+		</div>
+	</div>
+	<div th:replace="/layout/layout :: list"></div >
+	<footer th:replace="layout/layout :: footer"></footer>
+</body>
+
+</html>
